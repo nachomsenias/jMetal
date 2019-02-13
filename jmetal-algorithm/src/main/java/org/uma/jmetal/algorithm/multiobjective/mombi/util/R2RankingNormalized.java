@@ -1,8 +1,16 @@
 package org.uma.jmetal.algorithm.multiobjective.mombi.util;
 
-import org.uma.jmetal.solution.Solution;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-import java.util.*;
+import org.uma.jmetal.solution.Solution;
 
 @SuppressWarnings("serial")
 public class R2RankingNormalized<S extends Solution<?>> extends R2Ranking<S> {
@@ -44,13 +52,19 @@ public class R2RankingNormalized<S extends Solution<?>> extends R2Ranking<S> {
         R2SolutionData solutionData = this.getAttribute(solution);
         solutionData.alpha = this.getUtilityFunctions().evaluate(solution, i);
       }
+ 
+	  R2RankingAttribute<S> attribute = new R2RankingAttribute<>();
+      Map<S, R2SolutionData> dataMap = new HashMap<>();
+      for(S s : population) {
+    	  R2SolutionData data = attribute.getAttribute(s);
+    		  dataMap.put(s, data);
+      }
 
       Collections.sort(population, new Comparator<S>() {
         @Override
         public int compare(S o1, S o2) {
-          R2RankingAttribute<S> attribute = new R2RankingAttribute<>();
-          R2SolutionData data1 = (R2SolutionData) attribute.getAttribute(o1);
-          R2SolutionData data2 = (R2SolutionData) attribute.getAttribute(o2);
+          R2SolutionData data1 = dataMap.get(o1);
+          R2SolutionData data2 = dataMap.get(o2);
 
           if (data1.alpha < data2.alpha)
             return -1;
