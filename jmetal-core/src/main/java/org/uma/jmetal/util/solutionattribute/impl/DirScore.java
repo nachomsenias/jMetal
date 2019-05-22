@@ -12,6 +12,7 @@ import java.util.List;
  * Estimate DIR scores for solutions, used in D-NSGA-II
  * @author sunhaoran <nuaa_sunhr@yeah.net>
  */
+@SuppressWarnings("serial")
 public class DirScore<S extends Solution<?>>  extends GenericSolutionAttribute<S, Double> implements DensityEstimator<S> {
 
     private double[][] referenceVectors ;
@@ -24,7 +25,7 @@ public class DirScore<S extends Solution<?>>  extends GenericSolutionAttribute<S
     public void computeDensityEstimator(List<S> solutionSet) {
         int[] dirVector = computeDirVector(solutionSet) ;
         for(int i = 0;i < dirVector.length; i++){
-            Solution solution = solutionSet.get(i) ;
+            S solution = solutionSet.get(i) ;
             solution.setAttribute("dir-score", 1.0 / (double) dirVector[i]);
         }
     }
@@ -36,7 +37,7 @@ public class DirScore<S extends Solution<?>>  extends GenericSolutionAttribute<S
             int minIndex = 0;
             double minDistance = Double.MAX_VALUE;
             for(int i = 0; i < solutionSet.size(); i++){
-                Solution solution = solutionSet.get(i) ;
+                S solution = solutionSet.get(i) ;
                 double distance = computeAngleDistance(vector, solution.getObjectives()) ;
                 if(distance < minDistance){
                     minDistance = distance ;
