@@ -138,7 +138,7 @@ public class MOMBI2<S extends Solution<?>> extends MOMBI<S> {
 	}
 
 	@Override public String getName() {
-		return "MOMBI" ;
+		return "MOMBI2" ;
 	}
 
 	@Override public String getDescription() {

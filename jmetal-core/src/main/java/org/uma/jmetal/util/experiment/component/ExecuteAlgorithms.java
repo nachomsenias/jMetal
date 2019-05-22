@@ -5,6 +5,7 @@ import org.uma.jmetal.util.JMetalException;
 import org.uma.jmetal.util.JMetalLogger;
 import org.uma.jmetal.util.experiment.Experiment;
 import org.uma.jmetal.util.experiment.ExperimentComponent;
+import org.uma.jmetal.util.experiment.util.ExperimentAlgorithm;
 
 import java.io.File;
 
@@ -36,6 +37,10 @@ public class ExecuteAlgorithms<S extends Solution<?>, Result> implements Experim
     System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism",
             "" + this.experiment.getNumberOfCores());
 
+//    for (ExperimentAlgorithm<S, Result> alg : experiment.getAlgorithmList()) {
+//    	alg.runAlgorithm(experiment);
+//    }
+    
     experiment.getAlgorithmList()
             .parallelStream()
             .forEach(algorithm -> algorithm.runAlgorithm(experiment));
