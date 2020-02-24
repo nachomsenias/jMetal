@@ -49,7 +49,7 @@ public class PESA2Builder<S extends Solution<?>> implements AlgorithmBuilder<PES
 
   public PESA2Builder<S> setArchiveSize(int archiveSize) {
     if (archiveSize < 0) {
-      throw new JMetalException("archiveSize is negative: " + maxEvaluations);
+      throw new JMetalException("archiveSize is negative: " + archiveSize);
     }
     this.archiveSize = archiveSize;
 
@@ -58,7 +58,7 @@ public class PESA2Builder<S extends Solution<?>> implements AlgorithmBuilder<PES
 
   public PESA2Builder<S> setBisections(int biSections) {
     if (biSections < 0) {
-      throw new JMetalException("biSections is negative: " + maxEvaluations);
+      throw new JMetalException("biSections is negative: " + biSections);
     }
     this.biSections = biSections;
 

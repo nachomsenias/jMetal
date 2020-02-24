@@ -45,7 +45,7 @@ public class MOEAD extends AbstractMOEAD<DoubleSolution> {
     initializePopulation() ;
     initializeUniformWeight();
     initializeNeighborhood();
-    idealPoint.update(population); ;
+    idealPoint.update(population);
 
     evaluations = populationSize ;
     do {

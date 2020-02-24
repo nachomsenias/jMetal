@@ -310,4 +310,7 @@ public class PISAHypervolume<S extends Solution<?>> extends Hypervolume<S> {
     return contributions;
   }
 
+  @Override public String getName() {
+    return "PISA-HV" ;
+  }
 }

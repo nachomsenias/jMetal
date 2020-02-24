@@ -64,31 +64,11 @@ public class MOMBI2Study {
 		
 		for (int i = 0; i < problemList.size(); i++) {
 
-//			// XXX FIXED CODE
-//			Algorithm<List<DoubleSolution>> algorithm = null;
-//			
-//			for (int mc=0; mc<runs; mc++) {
-//				algorithm = new MOMBI2<DoubleSolution>(
-//						problemList.get(i).getProblem(),
-//						generations, 
-//						new SBXCrossover(1.0, 5),
-//						new PolynomialMutation(
-//								1.0 / problemList.get(i).getProblem().getNumberOfVariables(),
-//								10.0), 
-//						new BinaryTournamentSelection<DoubleSolution>(),
-//						new SequentialSolutionListEvaluator<DoubleSolution>(), 
-//						"resources/mombi2-weights/weight/weight_02D_152.sld");
-//				((MOMBI2<DoubleSolution>)algorithm)
-//					.setMaxPopulationSize(populationSize);
-//				algorithms.add(new ExperimentAlgorithm<>(algorithm, "MOMBI2",
-//						problemList.get(i),mc));
-//			}
-//			// XXX END -- FIXED CODE
+			// XXX FIXED CODE
+			Algorithm<List<DoubleSolution>> algorithm = null;
 			
-			
-			// XXX ERROR CODE
-			Algorithm<List<DoubleSolution>> algorithm = 
-					new MOMBI2<DoubleSolution>(
+			for (int mc=0; mc<runs; mc++) {
+				algorithm = new MOMBI2<DoubleSolution>(
 						problemList.get(i).getProblem(),
 						generations, 
 						new SBXCrossover(1.0, 5),
@@ -98,13 +78,33 @@ public class MOMBI2Study {
 						new BinaryTournamentSelection<DoubleSolution>(),
 						new SequentialSolutionListEvaluator<DoubleSolution>(), 
 						"resources/mombi2-weights/weight/weight_02D_152.sld");
-			((MOMBI2<DoubleSolution>)algorithm).setMaxPopulationSize(populationSize);
-			
-			for (int mc=0; mc<runs; mc++) {
-				algorithms.add(
-						new ExperimentAlgorithm<>(algorithm, "MOMBI2",problemList.get(i),mc)
-						);
+				((MOMBI2<DoubleSolution>)algorithm)
+					.setMaxPopulationSize(populationSize);
+				algorithms.add(new ExperimentAlgorithm<>(algorithm, "MOMBI2",
+						problemList.get(i),mc));
 			}
+			// XXX END -- FIXED CODE
+			
+			
+			// XXX ERROR CODE
+//			Algorithm<List<DoubleSolution>> algorithm = 
+//					new MOMBI2<DoubleSolution>(
+//						problemList.get(i).getProblem(),
+//						generations, 
+//						new SBXCrossover(1.0, 5),
+//						new PolynomialMutation(
+//								1.0 / problemList.get(i).getProblem().getNumberOfVariables(),
+//								10.0), 
+//						new BinaryTournamentSelection<DoubleSolution>(),
+//						new SequentialSolutionListEvaluator<DoubleSolution>(), 
+//						"resources/mombi2-weights/weight/weight_02D_152.sld");
+//			((MOMBI2<DoubleSolution>)algorithm).setMaxPopulationSize(populationSize);
+//			
+//			for (int mc=0; mc<runs; mc++) {
+//				algorithms.add(
+//						new ExperimentAlgorithm<>(algorithm, "MOMBI2",problemList.get(i),mc)
+//						);
+//			}
 			// XXX END -- ERROR CODE
 		}
 		

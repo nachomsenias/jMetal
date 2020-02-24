@@ -234,4 +234,7 @@ public class WFGHypervolume<S extends Solution<?>> extends Hypervolume<S> {
     return "WFG implementation of the hypervolume quality indicator" ;
   }
 
+  @Override public String getName() {
+    return "WFG-HV" ;
+  }
 }

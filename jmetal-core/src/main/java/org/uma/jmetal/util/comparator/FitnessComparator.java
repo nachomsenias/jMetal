@@ -1,10 +1,9 @@
 package org.uma.jmetal.util.comparator;
 
-import org.uma.jmetal.solution.Solution;
-import org.uma.jmetal.util.solutionattribute.impl.Fitness;
-
 import java.io.Serializable;
 import java.util.Comparator;
+
+import org.uma.jmetal.solution.Solution;
 
 /**
  * This class implements a <code>Comparator</code> (a method for comparing
@@ -15,7 +14,7 @@ import java.util.Comparator;
  */
 @SuppressWarnings("serial")
 public class FitnessComparator<S extends Solution<?>> implements Comparator<S>, Serializable {
-  private Fitness<S> solutionFitness = new Fitness<S>() ;
+//  private Fitness<S> solutionFitness = new Fitness<S>() ;
 
   /**
    * Compares two solutions.
@@ -33,8 +32,10 @@ public class FitnessComparator<S extends Solution<?>> implements Comparator<S>, 
       return -1;
     }
 
-    double fitness1 = solutionFitness.getAttribute(solution1);
-    double fitness2 = solutionFitness.getAttribute(solution2);
+//    double fitness1 = solutionFitness.getAttribute(solution1);
+//    double fitness2 = solutionFitness.getAttribute(solution2);
+    double fitness1 = solution1.getObjective(0);
+    double fitness2 = solution2.getObjective(0);
     if (fitness1 < fitness2) {
       return -1;
     }
